@@ -12,16 +12,12 @@ use winit::{
     window::{Window, WindowBuilder},
 };
 
+use crate::IDisplayEventListener;
+
 pub enum MouseEvent {
     Pressed(f64, f64, MouseButton),
     Released(f64, f64, MouseButton),
     Moved(f64, f64),
-}
-
-pub trait IDisplayEventListener {
-    fn on_resized(&mut self, _width: u32, _height: u32) {}
-
-    fn on_mouse_operated(&mut self, _mouse_event: MouseEvent) {}
 }
 
 #[derive(Debug, Clone, Copy, Hash, Eq, PartialEq)]
