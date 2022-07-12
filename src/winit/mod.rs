@@ -12,7 +12,7 @@ use winit::{
     window::{Window, WindowBuilder},
 };
 
-use crate::IDisplayEventListener;
+use crate::{IDisplay, IDisplayEventListener, IInstance};
 
 pub enum MouseEvent {
     Pressed(f64, f64, MouseButton),
@@ -256,6 +256,25 @@ pub fn create_display_with_size<T>(
 struct DummyListener;
 impl IDisplayEventListener for DummyListener {
     fn on_resized(&mut self, _width: u32, _height: u32) {}
+}
+
+impl IInstance for Instance {
+    type DisplayId = self::Id;
+    type Display = self::Display<()>;
+
+    fn create_display(&mut self) -> Self::DisplayId {
+        self.create_display()
+    }
+
+    fn try_get_display(&self, id: &Self::DisplayId) -> Option<&Self::Display> {
+        self.try_get_display(id.clone())
+    }
+}
+
+impl IDisplay for Display<()> {
+    fn is_redraw_requested(&self) -> bool {
+        self.is_close_requested
+    }
 }
 
 #[cfg(test)]
