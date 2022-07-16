@@ -269,6 +269,10 @@ impl IInstance for Instance {
     fn try_get_display(&self, id: &Self::DisplayId) -> Option<&Self::Display> {
         self.try_get_display(id.clone())
     }
+
+    fn try_update(&mut self) {
+        self.try_update();
+    }
 }
 
 impl IDisplay for Display<()> {

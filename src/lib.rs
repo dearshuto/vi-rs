@@ -19,6 +19,8 @@ pub trait IInstance {
     fn create_display(&mut self) -> Self::DisplayId;
 
     fn try_get_display(&self, id: &Self::DisplayId) -> Option<&Self::Display>;
+
+    fn try_update(&mut self);
 }
 
 pub trait IDisplay {
