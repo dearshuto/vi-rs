@@ -262,6 +262,10 @@ impl IInstance for Instance {
     type DisplayId = self::Id;
     type Display = self::Display<()>;
 
+    fn new() -> Self {
+        Self::new()
+    }
+
     fn create_display(&mut self) -> Self::DisplayId {
         self.create_display()
     }

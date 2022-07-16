@@ -16,6 +16,8 @@ pub trait IInstance {
     type DisplayId: Eq + PartialEq + Clone + Copy;
     type Display;
 
+    fn new() -> Self;
+
     fn create_display(&mut self) -> Self::DisplayId;
 
     fn try_get_display(&self, id: &Self::DisplayId) -> Option<&Self::Display>;
