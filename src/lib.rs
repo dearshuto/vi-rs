@@ -22,7 +22,7 @@ pub trait IInstance {
 
     fn try_get_display(&self, id: &Self::DisplayId) -> Option<&Self::Display>;
 
-    fn try_update(&mut self);
+    fn try_update(&mut self) -> bool;
 }
 
 pub trait IDisplay {
