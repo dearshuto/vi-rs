@@ -230,8 +230,8 @@ impl IInstance for Instance {
         self.try_get_display(id.clone())
     }
 
-    fn try_update(&mut self) {
-        self.try_update();
+    fn try_update(&mut self) -> bool {
+        self.try_update()
     }
 }
 
