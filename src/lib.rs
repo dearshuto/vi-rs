@@ -1,7 +1,4 @@
 #[cfg(any(not(target_arch = "wasm32")))]
-use crate::winit::MouseEvent;
-
-#[cfg(any(not(target_arch = "wasm32")))]
 pub mod glutin;
 
 #[cfg(any(not(target_arch = "wasm32")))]
@@ -13,8 +10,19 @@ pub mod web_sys;
 #[cfg(any(not(target_arch = "wasm32")))]
 pub trait IDisplayEventListener {
     fn on_resized(&mut self, _width: u32, _height: u32) {}
+}
 
-    fn on_mouse_operated(&mut self, _mouse_event: MouseEvent) {}
+pub trait IInstance {
+    type DisplayId: Eq + PartialEq + Clone + Copy;
+    type Display;
+
+    fn create_display(&mut self) -> Self::DisplayId;
+
+    fn try_get_display(&self, id: &Self::DisplayId) -> Option<&Self::Display>;
+}
+
+pub trait IDisplay {
+    fn is_redraw_requested(&self) -> bool;
 }
 
 #[cfg(test)]
