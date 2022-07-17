@@ -102,6 +102,7 @@ impl Instance {
             match event {
                 RedrawRequested(window_id) => {
                     if let Some(display) = self.display_map.get_mut(&Id { id: window_id }) {
+                        display.window.swap_buffers().unwrap();
                         display.is_redraw_requested = true;
                     }
                 }
@@ -240,9 +241,7 @@ impl IDisplay for Display {
         self.is_redraw_requested
     }
 
-    fn listen<TListener: IDisplayEventListener>(&self, _listener: &mut TListener) {
-        todo!()
-    }
+    fn listen<TListener: IDisplayEventListener>(&self, _listener: &mut TListener) {}
 }
 
 #[cfg(test)]
