@@ -281,7 +281,7 @@ impl IInstance for Instance {
 
 impl IDisplay for Display<()> {
     fn is_redraw_requested(&self) -> bool {
-        self.is_close_requested
+        self.is_redraw_requested
     }
 }
 
