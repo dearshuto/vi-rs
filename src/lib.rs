@@ -27,6 +27,8 @@ pub trait IInstance {
 
 pub trait IDisplay {
     fn is_redraw_requested(&self) -> bool;
+
+    fn listen<TListener: IDisplayEventListener>(&self, listener: &mut TListener);
 }
 
 #[cfg(test)]
