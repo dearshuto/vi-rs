@@ -283,6 +283,10 @@ impl IDisplay for Display<()> {
     fn is_redraw_requested(&self) -> bool {
         self.is_redraw_requested
     }
+
+    fn listen<TListener: IDisplayEventListener>(&self, listener: &mut TListener) {
+        self.listen(listener)
+    }
 }
 
 #[cfg(test)]
