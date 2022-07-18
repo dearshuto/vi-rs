@@ -29,6 +29,8 @@ pub trait IDisplay {
     fn is_redraw_requested(&self) -> bool;
 
     fn listen<TListener: IDisplayEventListener>(&self, listener: &mut TListener);
+
+    fn get_scale_factor(&self) -> f64;
 }
 
 #[cfg(test)]

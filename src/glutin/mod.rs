@@ -242,6 +242,10 @@ impl IDisplay for Display {
     }
 
     fn listen<TListener: IDisplayEventListener>(&self, _listener: &mut TListener) {}
+
+    fn get_scale_factor(&self) -> f64 {
+        self.window.window().scale_factor()
+    }
 }
 
 #[cfg(test)]
