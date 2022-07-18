@@ -288,7 +288,7 @@ impl IDisplay for Display<()> {
         self.listen(listener)
     }
 
-    fn get_scale_factor(&self) -> f32 {
+    fn get_scale_factor(&self) -> f64 {
         self.window.scale_factor()
     }
 }
