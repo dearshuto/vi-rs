@@ -2,6 +2,8 @@ use std::collections::HashMap;
 
 use wasm_bindgen::JsCast;
 
+use crate::{IInstance, IDisplay, IDisplayEventListener};
+
 pub struct Instance {
     display_table: HashMap<DisplayId, Display>,
 }
@@ -39,6 +41,27 @@ impl Instance {
     }
 }
 
+impl IInstance for Instance {
+    type DisplayId = DisplayId;
+    type Display = Display;
+
+    fn new() -> Self {
+        Self::new()
+    }
+
+    fn create_display(&mut self) -> Self::DisplayId {
+        self.create_display()
+    }
+
+    fn try_get_display(&self, id: &Self::DisplayId) -> Option<&Self::Display> {
+        self.try_get_display(id)
+    }
+
+    fn try_update(&mut self) -> bool {
+        false
+    }
+}
+
 #[derive(Clone, Eq, Hash, PartialEq)]
 pub struct DisplayId {
     id: String,
@@ -47,4 +70,14 @@ pub struct DisplayId {
 pub struct Display {
     pub canvas: web_sys::HtmlCanvasElement,
     pub context: web_sys::WebGl2RenderingContext,
+}
+
+impl IDisplay for Display {
+    fn is_redraw_requested(&self) -> bool {
+        true
+    }
+
+    fn listen<TListener: IDisplayEventListener>(&self, _listener: &mut TListener) {
+        // todo!()
+    }
 }
