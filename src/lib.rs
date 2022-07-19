@@ -7,7 +7,6 @@ pub mod winit;
 #[cfg(target_arch = "wasm32")]
 pub mod web_sys;
 
-#[cfg(any(not(target_arch = "wasm32")))]
 pub trait IDisplayEventListener {
     fn on_resized(&mut self, _width: u32, _height: u32) {}
 }
