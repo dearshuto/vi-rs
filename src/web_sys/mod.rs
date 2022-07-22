@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use wasm_bindgen::JsCast;
 
-use crate::{IInstance, IDisplay, IDisplayEventListener};
+use crate::{IDisplay, IDisplayEventListener, IInstance};
 
 pub struct Instance {
     display_table: HashMap<DisplayId, Display>,
@@ -79,5 +79,9 @@ impl IDisplay for Display {
 
     fn listen<TListener: IDisplayEventListener>(&self, _listener: &mut TListener) {
         // todo!()
+    }
+
+    fn get_scale_factor(&self) -> f64 {
+        1.0
     }
 }
