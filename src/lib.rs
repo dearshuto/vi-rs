@@ -12,7 +12,7 @@ pub trait IDisplayEventListener {
 }
 
 pub trait IInstance {
-    type DisplayId: Eq + PartialEq + Clone + Copy;
+    type DisplayId: Eq + PartialEq + Clone;
     type Display: IDisplay;
 
     fn new() -> Self;
